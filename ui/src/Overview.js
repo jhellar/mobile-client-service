@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MobileClientOverviewList from './MobileClientOverviewList';
+import { MobileClientBuildList } from './MobileClientBuildList';
 
 // TODO: Mocked data for now.
 const mobileClients = {
@@ -97,11 +98,83 @@ const mobileClients = {
   }
 };
 
+// TODO: Mocked data for now.
+const mobileClientBuilds = [
+  {
+    "metadata": {
+      "name": "android-debug-2",
+      "selfLink": "/apis/build.openshift.io/v1/namespaces/myproject/builds/android-debug-2",
+      "annotations": {
+        "openshift.io/build.number": "2"
+      }
+    },
+    "status": {
+      "phase": "Failed",
+      "startTimestamp": "2018-07-23T15:18:04Z",
+      "completionTimestamp": "2018-07-24T15:19:35Z",
+      "config": {
+        "kind": "BuildConfig",
+        "namespace": "myproject",
+        "name": "android-debug"
+      },
+      "output": {}
+    },
+    "kind": "Build",
+    "apiVersion": "build.openshift.io/v1"
+  },
+  {
+    "metadata": {
+      "name": "ios-debug-1",
+      "selfLink": "/apis/build.openshift.io/v1/namespaces/myproject/builds/ios-debug-1",
+      "annotations": {
+        "openshift.io/build.number": "1"
+      }
+    },
+    "status": {
+      "phase": "Complete",
+      "startTimestamp": "2018-07-25T15:18:04Z",
+      "completionTimestamp": "2018-07-24T15:19:35Z",
+      "config": {
+        "kind": "BuildConfig",
+        "namespace": "myproject",
+        "name": "ios-debug"
+      },
+      "output": {}
+    },
+    "kind": "Build",
+    "apiVersion": "build.openshift.io/v1"
+  },
+  {
+    "metadata": {
+      "name": "cordova-release-2",
+      "selfLink": "/apis/build.openshift.io/v1/namespaces/myproject/builds/ios-debug-1",
+      "annotations": {
+        "openshift.io/build.number": "3"
+      }
+    },
+    "status": {
+      "phase": "Running",
+      "startTimestamp": "2018-07-25T15:18:04Z",
+      "completionTimestamp": "2018-07-24T15:19:35Z",
+      "config": {
+        "kind": "BuildConfig",
+        "namespace": "myproject",
+        "name": "cordova-release"
+      },
+      "output": {}
+    },
+    "kind": "Build",
+    "apiVersion": "build.openshift.io/v1"
+  }
+];
+
+
 class Overview extends Component {
   render() {
     return (
       <div>
         <MobileClientOverviewList mobileClients={mobileClients}></MobileClientOverviewList>
+        <MobileClientBuildList mobileClientBuilds={mobileClientBuilds}></MobileClientBuildList>
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Row, ListView, DropdownKebab, MenuItem} from 'patternfly-react';
-
 import './OverviewListItemHeader.css';
 
 const actions = () => (
