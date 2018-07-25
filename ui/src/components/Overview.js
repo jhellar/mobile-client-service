@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MobileClientOverviewList from './MobileClientOverviewList';
+import MobileClientServiceChart from './MobileClientServiceChart';
 
 // TODO: Mocked data for now.
 const mobileClients = {
@@ -97,11 +98,20 @@ const mobileClients = {
   }
 };
 
+// todo 
+const mobileServices = {
+  "mobileServices": {
+    "bound": 1,
+    "unbound": 2
+  }
+};
+
 class Overview extends Component {
   render() {
     return (
       <div>
         <MobileClientOverviewList mobileClients={mobileClients}></MobileClientOverviewList>
+        <MobileClientServiceChart mobileServices={mobileServices}></MobileClientServiceChart>
       </div>
     );
   }
