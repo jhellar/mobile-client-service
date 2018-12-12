@@ -51,26 +51,28 @@ describe('login', function() {
   });
 });
 
-// describe('create app', function() {
-//   initTest(this);
+describe('create app', function() {
+  initTest(this);
 
-//   before('login', async function() {
-//     await login();
-//   });
+  before('login', async function() {
+    await login();
+  });
 
-//   it('should create app', async function() {
-//     await page.click('.toolbar-pf button');
+  it('should create app', async function() {
+    const appName = `test${Date.now()}`;
 
-//     await page.type('#name', 'test');
-//     await page.click('.modal-footer .btn-primary');
+    await page.click('.toolbar-pf button');
 
-//     await page.waitFor('.card-pf h1');
-//     const appTitleElement = page.$('.card-pf h1');
-//     const appTitle = await page.evaluate()
+    await page.type('#name', appName);
+    await page.click('.modal-footer .btn-primary');
 
-//     const error = await page.$('.pficon-error-circle-o');
-//     assert.strictEqual(error, undefined, 'there should be no error when creating app');
+    await page.waitForFunction(
+      text => [...document.querySelectorAll('.card-pf h1')].find(e => e.innerText === text),
+      {},
+      appName
+    );
 
-//     await new Promise(resolve => setTimeout(resolve, 20000));
-//   });
-// });
+    const error = await page.$('.pficon-error-circle-o');
+    assert.strictEqual(error, null, 'there should be no error when creating app');
+  });
+});
