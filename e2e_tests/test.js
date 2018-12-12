@@ -10,7 +10,11 @@ const initTest = context => {
   context.timeout(0);
 
   before('initialize puppeteer', async function() {
-    browser = await puppeteer.launch({ ignoreHTTPSErrors: true, headless });
+    browser = await puppeteer.launch({
+      ignoreHTTPSErrors: true,
+      headless,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     page = await browser.newPage();
   });
   
